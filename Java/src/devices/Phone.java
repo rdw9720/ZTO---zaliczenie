@@ -2,7 +2,14 @@ package devices;
 
 import creatures.Human;
 
+import java.net.URL;
+
 public class Phone extends Device {
+
+    static final String serverAddress = "0.0.0.0";
+    static final String protocol = "2.0";
+    static final String versionName = "Cool_Version";
+
     @Override
     public String toString() {
         return "Phone{}";
@@ -29,5 +36,25 @@ public class Phone extends Device {
         seller.phone = null;
         System.out.println("Buyer bought: " + buyer.phone);
         System.out.println("For: " + price);
+    }
+
+    public void installAnApp(String name) {
+
+    }
+
+    public void installAnApp(String name, String version) {
+
+    }
+
+    public void installAnApp(String name, String version, String serverAddress) {
+
+    }
+
+    public void installAnApp(String[] names) {
+
+    }
+
+    public void installAnApp(URL app) {
+
     }
 }

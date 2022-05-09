@@ -2,7 +2,7 @@ package devices;
 
 import creatures.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     final String model;
     final String producer;
 
@@ -49,4 +49,6 @@ public class Car extends Device {
             System.out.println("Buyer bought: " + buyer.getCar());
             System.out.println("For: " + price);
     }
+
+    abstract void refuel();
 }
