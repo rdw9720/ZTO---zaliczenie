@@ -22,5 +22,8 @@ public class JavaApp {
         System.out.println(human);
         System.out.println(buyer);
         System.out.println(buyer.cash);
+        System.out.println(buyer.getCar(0).hasOwner());
+        System.out.println(buyer.getCar(0).hasSoldTo(human, buyer));
+        System.out.println(buyer.getCar(0).transactionsAmount());
     }
 }

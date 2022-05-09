@@ -2,7 +2,9 @@ package devices;
 
 import creatures.Human;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public abstract class Car extends Device {
     final String model;
@@ -12,12 +14,15 @@ public abstract class Car extends Device {
 
     String color;
 
+    public List<Human> owners;
+
     public Car(String model, String producer, String color, Double value, Date productionYear) {
         this.model = model;
         this.producer = producer;
         this.color = color;
         this.value = value;
         this.yearOfProduction = productionYear;
+        this.owners = new ArrayList<>();
     }
 
     @Override
@@ -35,6 +40,9 @@ public abstract class Car extends Device {
         if (buyerEmptySpotIndex < 0) {
             throw new Exception("No place for car.");
         }
+        if (seller.getCar(sellerCarIndex).owners.get(seller.getCar(sellerCarIndex).owners.size() - 1) != seller) {
+            throw new Exception("This is not the real owner.");
+        }
         if (buyer.cash < price) {
             System.out.println("Buyer doesn't have enough money.");
             return;
@@ -48,6 +56,19 @@ public abstract class Car extends Device {
     }
 
     abstract void refuel();
+
+   public boolean hasOwner() {
+        return !owners.isEmpty();
+    }
+
+   public boolean hasSoldTo(Human seller, Human buyer) {
+        int indexOfSeller = owners.indexOf(seller);
+        return owners.get(indexOfSeller + 1) == buyer;
+    }
+
+    public int transactionsAmount() {
+        return owners.size();
+    }
 
     @Override
     public String toString() {

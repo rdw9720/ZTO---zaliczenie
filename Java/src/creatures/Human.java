@@ -53,9 +53,11 @@ public class Human {
     public void setCar(Car car, int parkingNumber) {
         if (salary > car.value) {
             System.out.println("You're rich enough to buy this car. Congrats!");
+            car.owners.add(this);
             this.garage[parkingNumber] = car;
         } else if (salary > (car.value / 12)) {
             System.out.println("You're able to get the car with a bit of a loan. Congrats!");
+            car.owners.add(this);
             this.garage[parkingNumber] = car;
         } else {
             System.out.println("Get a job pal.");
