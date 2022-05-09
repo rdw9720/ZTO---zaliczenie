@@ -1,11 +1,8 @@
 import creatures.Pet;
 import creatures.Animal;
 import creatures.Human;
-import devices.Diesel;
-
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import devices.Phone;
+import software.Application;
 
 public class JavaApp {
 
@@ -13,17 +10,18 @@ public class JavaApp {
         Animal pet = new Pet("Chinchilla");
         Human human = new Human(pet);
         human.setSalary(84.0);
-        human.setCar(new Diesel("Corsa", "Opel", "Green", 1000.0, new Date()), 0);
-        human.setCar(new Diesel("Corsa", "Opel", "Green", 1000.0, Date.from(LocalDate.of(1985, 1, 1).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())), 1);
-        Human buyer = new Human(null);
-        human.sortGarageByOldest();
-        buyer.cash = 1999.0;
-        human.getCar(1).sell(human, buyer, 1000.0);
-        System.out.println(human);
-        System.out.println(buyer);
-        System.out.println(buyer.cash);
-        System.out.println(buyer.getCar(0).hasOwner());
-        System.out.println(buyer.getCar(0).hasSoldTo(human, buyer));
-        System.out.println(buyer.getCar(0).transactionsAmount());
+        human.phone = new Phone();
+        human.cash = 1000.0;
+        Application firstApp = new Application("App", 456.0);
+        human.phone.buyAnApp(human, firstApp);
+        human.phone.buyAnApp(human, new Application("Zapp", 1.0));
+        human.phone.buyAnApp(human, new Application("Rapp", 0.0));
+        System.out.println(human.cash);
+        System.out.println(human.phone.hasAnApp(firstApp.name));
+        System.out.println(human.phone.hasAnApp(firstApp));
+        human.phone.listFreeApps();
+        System.out.println(human.phone.getAppsValue());
+        human.phone.printSortedAlphabetically();
+        human.phone.printSortedByPrice();
     }
 }
