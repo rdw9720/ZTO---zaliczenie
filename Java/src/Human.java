@@ -2,9 +2,24 @@ import java.util.Date;
 
 public class Human {
     Animal pet;
-    Car car;
+
+    public Car getCar() {
+        return car;
+    }
+
+    private Car car;
+
+    public Double getPreviousBankStatement() {
+        System.out.println("Previous Bank Statement Date: " + previousBankStatementDate);
+        System.out.println("Previous Bank Statement Salary: " + previousBankStatementSalary);
+        this.previousBankStatementSalary = this.salary;
+        this.previousBankStatementDate = new Date();
+        return salary;
+    }
+
     private Date previousBankStatementDate;
     private Double previousBankStatementSalary;
+
     private Double salary;
 
     public Human(Animal pet) {
@@ -12,7 +27,7 @@ public class Human {
     }
 
     public void setSalary(Double salary) {
-        if(salary < 0) {
+        if (salary < 0) {
             System.out.println("Wrong salary amount");
             return;
         }
@@ -22,11 +37,15 @@ public class Human {
         this.salary = salary;
     }
 
-    public Double getPreviousBankStatement() {
-        System.out.println("Previous Bank Statement Date: " + previousBankStatementDate);
-        System.out.println("Previous Bank Statement Salary: " + previousBankStatementSalary);
-        this.previousBankStatementSalary = this.salary;
-        this.previousBankStatementDate = new Date();
-        return salary;
+    public void setCar(Car car) {
+        if (salary > car.value) {
+            System.out.println("You're rich enough to buy this car. Congrats!");
+            this.car = car;
+        } else if (salary > (car.value / 12)) {
+            System.out.println("You're able to get the car with a bit of a loan. Congrats!");
+            this.car = car;
+        } else {
+            System.out.println("Get a job pal.");
+        }
     }
 }
