@@ -15,5 +15,6 @@ public class JavaApp {
         System.out.println(human.toString());
         System.out.println(human.getCar().toString());
         System.out.println(new Phone().toString());
+        human.getCar().turnOn();
     }
 }

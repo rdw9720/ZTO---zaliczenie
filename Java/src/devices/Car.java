@@ -1,6 +1,6 @@
 package devices;
 
-public class Car {
+public class Car extends Device{
     final String model;
     final String producer;
 
@@ -22,5 +22,10 @@ public class Car {
                 ", value=" + value +
                 ", color='" + color + '\'' +
                 '}';
+    }
+
+    @Override
+    public void turnOn() {
+        System.out.println("Car is on");
     }
 }
