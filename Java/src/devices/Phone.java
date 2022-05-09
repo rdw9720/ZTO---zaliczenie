@@ -1,6 +1,6 @@
 package devices;
 
-import mammals.Human;
+import creatures.Human;
 
 public class Phone extends Device {
     @Override

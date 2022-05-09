@@ -1,6 +1,6 @@
 package interfaces;
 
-import mammals.Human;
+import creatures.Human;
 
 public interface Sellable {
     void sell(Human seller, Human buyer, Double price);

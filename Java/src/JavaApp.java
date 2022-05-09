@@ -1,11 +1,12 @@
+import creatures.Pet;
 import devices.Car;
-import mammals.Animal;
-import mammals.Human;
+import creatures.Animal;
+import creatures.Human;
 
 public class JavaApp {
 
     public static void main(String[] args) {
-        Animal pet = new Animal("Chinchilla");
+        Animal pet = new Pet("Chinchilla");
         Human human = new Human(pet);
         human.setSalary(84.0);
         human.setCar(new Car("Corsa", "Opel", "Green", 1000.0));

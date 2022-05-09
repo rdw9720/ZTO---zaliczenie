@@ -1,6 +1,6 @@
 package devices;
 
-import mammals.Human;
+import creatures.Human;
 
 public class Car extends Device {
     final String model;
