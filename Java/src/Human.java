@@ -1,3 +1,5 @@
+import devices.Car;
+
 import java.util.Date;
 
 public class Human {
@@ -47,5 +49,16 @@ public class Human {
         } else {
             System.out.println("Get a job pal.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "pet=" + pet +
+                ", car=" + car +
+                ", previousBankStatementDate=" + previousBankStatementDate +
+                ", previousBankStatementSalary=" + previousBankStatementSalary +
+                ", salary=" + salary +
+                '}';
     }
 }
