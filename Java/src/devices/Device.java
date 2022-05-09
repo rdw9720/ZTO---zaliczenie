@@ -7,8 +7,9 @@ import java.util.Date;
 public abstract class Device implements Sellable {
     String producer;
     String mode;
-    Date yearOfProduction;
+    public Date yearOfProduction;
 
+    Double value;
     @Override
     public String toString() {
         return "Device{" +

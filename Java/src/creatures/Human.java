@@ -3,16 +3,16 @@ package creatures;
 import devices.Car;
 import devices.Phone;
 
-import java.util.Date;
+import java.util.*;
 
 public class Human {
     Animal pet;
 
-    public Car getCar() {
-        return car;
+    public Car getCar(int parkingNumber) {
+        return garage[parkingNumber];
     }
 
-    private Car car;
+    private Car[] garage;
 
     public Double getPreviousBankStatement() {
         System.out.println("Previous Bank Statement Date: " + previousBankStatementDate);
@@ -31,7 +31,12 @@ public class Human {
     public Phone phone;
 
     public Human(Animal pet) {
+        this(pet, 3);
+    }
+
+    public Human(Animal pet, int garageSize) {
         this.pet = pet;
+        this.garage = new Car[garageSize];
     }
 
     public void setSalary(Double salary) {
@@ -45,30 +50,67 @@ public class Human {
         this.salary = salary;
     }
 
-    public void setCar(Car car) {
+    public void setCar(Car car, int parkingNumber) {
         if (salary > car.value) {
             System.out.println("You're rich enough to buy this car. Congrats!");
-            this.car = car;
+            this.garage[parkingNumber] = car;
         } else if (salary > (car.value / 12)) {
             System.out.println("You're able to get the car with a bit of a loan. Congrats!");
-            this.car = car;
+            this.garage[parkingNumber] = car;
         } else {
             System.out.println("Get a job pal.");
         }
     }
 
-    public void removeCar() {
-        this.car = null;
+    public void removeCar(int parkingNumber) {
+        this.garage[parkingNumber] = null;
+    }
+
+    public int getAnyCarParkingSpotNumber() {
+        int index = (int) Arrays.stream(garage).takeWhile(Objects::isNull).count();
+        if (index == garage.length) {
+            index = -1;
+        }
+        return index;
+    }
+
+    public int getEmptyParkingSpotNumber() {
+        int index = (int) Arrays.stream(garage).takeWhile(Objects::nonNull).count();
+        if (index == garage.length) {
+            index = -1;
+        }
+        return index;
+    }
+
+    public Double getGarageValue() {
+        return Arrays.stream(garage).filter(Objects::nonNull).mapToDouble(car -> car.value).sum();
+    }
+
+    public void sortGarageByOldest() {
+        Arrays.sort(garage, new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                if (o1 == null) {
+                    return -1;
+                }
+                if (o2 == null) {
+                    return 1;
+                }
+                return o1.yearOfProduction.compareTo(o2.yearOfProduction);
+            }
+        });
     }
 
     @Override
     public String toString() {
         return "Human{" +
                 "pet=" + pet +
-                ", car=" + car +
+                ", garage=" + Arrays.toString(garage) +
                 ", previousBankStatementDate=" + previousBankStatementDate +
                 ", previousBankStatementSalary=" + previousBankStatementSalary +
                 ", salary=" + salary +
+                ", cash=" + cash +
+                ", phone=" + phone +
                 '}';
     }
 }
