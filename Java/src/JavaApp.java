@@ -1,5 +1,6 @@
 import devices.Car;
-import devices.Phone;
+import mammals.Animal;
+import mammals.Human;
 
 public class JavaApp {
 
@@ -10,11 +11,8 @@ public class JavaApp {
         human.setCar(new Car("Corsa", "Opel", "Green", 1000.0));
         System.out.println(human.getCar());
         human.setCar(new Car("Corsa", "Opel", "Green", 1000.0));
-        System.out.println(human.getCar());
-        System.out.println(pet.toString());
-        System.out.println(human.toString());
-        System.out.println(human.getCar().toString());
-        System.out.println(new Phone().toString());
-        human.getCar().turnOn();
+        Human buyer = new Human(null);
+        buyer.cash = 999.0;
+        human.getCar().sell(human, buyer, 10.0);
     }
 }

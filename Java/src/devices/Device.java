@@ -1,8 +1,10 @@
 package devices;
 
+import interfaces.Sellable;
+
 import java.util.Date;
 
-public abstract class Device {
+public abstract class Device implements Sellable {
     String producer;
     String mode;
     Date yearOfProduction;
